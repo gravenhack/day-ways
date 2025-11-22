@@ -1,0 +1,7 @@
+{
+  "name": "Chronos Flow",
+  "description": "An adaptive, energy-centric daily organizer powered by AI. Features circadian rhythm analysis, flow state tools, and a unique circular timeline.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
