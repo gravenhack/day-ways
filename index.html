@@ -3,29 +3,40 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
-    <meta name="theme-color" content="#0f172a" />
-    <title>Chronos Flow</title>
+    <meta name="theme-color" content="#000000" />
+    <title>MagicCalc AI</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              midnight: '#0f172a',
-              void: '#020617',
-              energy: '#f59e0b',
-              mental: '#6366f1',
-              physical: '#ef4444',
-              emotional: '#10b981',
+              calc: {
+                bg: '#000000',
+                btn: '#333333',
+                btnActive: '#4d4d4d',
+                orange: '#ff9f0a',
+                orangeActive: '#ffb340',
+                light: '#a5a5a5',
+                lightActive: '#d4d4d4',
+              },
+              magic: {
+                dark: '#1a103c',
+                light: '#a78bfa',
+              }
             },
             animation: {
-              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-              'float': 'float 6s ease-in-out infinite',
+              'fade-in': 'fadeIn 0.2s ease-out',
+              'slide-up': 'slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
             },
             keyframes: {
-              float: {
-                '0%, 100%': { transform: 'translateY(0)' },
-                '50%': { transform: 'translateY(-10px)' },
+              fadeIn: {
+                '0%': { opacity: '0' },
+                '100%': { opacity: '1' },
+              },
+              slideUp: {
+                '0%': { transform: 'translateY(100%)' },
+                '100%': { transform: 'translateY(0)' },
               }
             }
           },
@@ -34,19 +45,23 @@
     </script>
     <style>
       body {
-        background-color: #0f172a;
-        color: #f8fafc;
+        background-color: #000000;
+        color: #ffffff;
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        overflow: hidden; /* App-like feel */
+        overflow: hidden;
+        touch-action: manipulation; /* Prevent double-tap zoom */
       }
-      /* Hide scrollbar for Chrome, Safari and Opera */
       .no-scrollbar::-webkit-scrollbar {
           display: none;
       }
-      /* Hide scrollbar for IE, Edge and Firefox */
       .no-scrollbar {
-          -ms-overflow-style: none;  /* IE and Edge */
-          scrollbar-width: none;  /* Firefox */
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+      }
+      /* Active state for touch devices */
+      .active-scale:active {
+        transform: scale(0.95);
+        transition: transform 0.1s;
       }
     </style>
   <script type="importmap">

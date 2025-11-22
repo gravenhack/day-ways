@@ -1,6 +1,6 @@
 {
-  "name": "Chronos Flow",
-  "description": "An adaptive, energy-centric daily organizer powered by AI. Features circadian rhythm analysis, flow state tools, and a unique circular timeline.",
+  "name": "MagicCalc AI",
+  "description": "A hybrid calculator combining a standard iOS-style interface with natural language AI solving capabilities.",
   "requestFramePermissions": [
     "microphone"
   ]
