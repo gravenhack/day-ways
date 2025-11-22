@@ -1,3 +1,4 @@
+
 import { GoogleGenAI, Type } from "@google/genai";
 import { DayScenario, Task, EnergyType, TaskStatus } from "../types";
 
@@ -80,51 +81,4 @@ export const generateMorningScenarios = async (
     return json.scenarios.map((s: any) => ({
       id: generateId(),
       name: s.name,
-      description: s.description,
-      focus: s.focus,
-      predictedEnergyEnd: s.predictedEnergyEnd || 50,
-      tasks: s.tasks.map((t: any) => ({
-        id: generateId(),
-        title: t.title,
-        description: t.description || "",
-        durationMinutes: t.durationMinutes,
-        energyCost: t.energyCost,
-        energyType: t.energyType as EnergyType,
-        status: TaskStatus.PENDING,
-        context: t.context,
-        startTime: t.startTime // We will process this into a real date in the component
-      }))
-    }));
-
-  } catch (error) {
-    console.error("Gemini generation failed", error);
-    // Fallback for demo if API fails or key missing
-    return [
-      {
-        id: "fallback-1",
-        name: "Offline Balanced Mode",
-        description: "A generated fallback plan (API Error).",
-        focus: "Balanced",
-        predictedEnergyEnd: 60,
-        tasks: backlogTasks.map((t, i) => ({
-          id: generateId(),
-          title: t,
-          durationMinutes: 30,
-          energyCost: 4,
-          energyType: EnergyType.MENTAL,
-          status: TaskStatus.PENDING,
-          context: "General",
-          startTime: `09:${i * 3}0`
-        }))
-      }
-    ];
-  }
-};
-
-export const suggestTaskCompletion = async (
-    task: Task,
-    actualDuration: number
-): Promise<string> => {
-    // Mock AI reflection for the "Rewind" or post-task
-    return "Great job maintaining flow. You finished 5 minutes early. Suggest taking a micro-break.";
-}
+      description:
